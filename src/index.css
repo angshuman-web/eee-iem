@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 7.5rem; /* offset sticky header for in-page anchors */
+  }
+  body {
+    @apply bg-white font-sans text-ink-700 antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    @apply bg-brand-blue/15 text-brand-navy;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display text-ink-900;
+    letter-spacing: -0.015em;
+  }
+}
+
+@layer components {
+  /* Consistent horizontal gutter used across every section (12-col rhythm). */
+  .container-x {
+    @apply mx-auto w-full max-w-container px-5 lg:px-8;
+  }
+
+  /* Buttons share a light-sweep sheen (::after), a lift on hover and a subtle
+     press on click. `isolation` + z-index:-1 keeps the sheen above the button
+     background but below its label. */
+  .btn-primary {
+    @apply relative isolate inline-flex items-center justify-center gap-2 overflow-hidden rounded-lg bg-brand-blue px-5 py-3 text-sm font-semibold text-white shadow-pill;
+    transition: transform 0.35s theme('transitionTimingFunction.smooth'),
+      background-color 0.3s ease, box-shadow 0.35s ease;
+  }
+  .btn-primary:hover {
+    @apply bg-brand-bluedark;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px -8px rgba(22, 86, 196, 0.55);
+  }
+  .btn-primary:active {
+    transform: translateY(0) scale(0.97);
+  }
+
+  .btn-ghost {
+    @apply relative isolate inline-flex items-center justify-center gap-2 overflow-hidden rounded-lg border border-surface-line bg-white px-5 py-3 text-sm font-semibold text-ink-700;
+    transition: transform 0.35s theme('transitionTimingFunction.smooth'),
+      border-color 0.3s ease, color 0.3s ease, box-shadow 0.35s ease;
+  }
+  .btn-ghost:hover {
+    @apply border-brand-blue/40 text-brand-blue;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px -14px rgba(22, 86, 196, 0.4);
+  }
+  .btn-ghost:active {
+    transform: translateY(0) scale(0.97);
+  }
+
+  .btn-primary::after,
+  .btn-ghost::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.45) 50%, transparent 70%);
+    transform: translateX(-135%);
+    transition: transform 0.7s theme('transitionTimingFunction.smooth');
+  }
+  .btn-primary:hover::after,
+  .btn-ghost:hover::after {
+    transform: translateX(135%);
+  }
+
+  /* Small uppercase eyebrow used above section titles. */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.18em] text-brand-blue;
+  }
+
+  .card {
+    @apply rounded-2xl border border-surface-line bg-white shadow-soft;
+    transition: transform 0.45s theme('transitionTimingFunction.smooth'),
+      box-shadow 0.45s theme('transitionTimingFunction.smooth'),
+      border-color 0.3s ease, background-color 0.3s ease;
+    will-change: transform;
+  }
+  .card-hover:hover {
+    @apply border-brand-blue/25 shadow-cardhover;
+    transform: translateY(-6px);
+  }
+}
+
+@layer utilities {
+  /* Thin gold-to-blue rule for editorial accents. */
+  .rule-accent {
+    @apply h-px w-full bg-gradient-to-r from-brand-blue/40 via-surface-line to-transparent;
+  }
+  /* Reveal-on-scroll: base state hidden, .is-visible fades/rises/settles in
+     with a faint scale + de-blur for a modern, cinematic entrance. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(26px) scale(0.985);
+    filter: blur(6px);
+    transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+      filter 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform, filter;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; filter: none; transition: none; }
+  .btn-primary::after, .btn-ghost::after { display: none; }
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

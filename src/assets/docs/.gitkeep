@@ -1,0 +1,24 @@
+# Downloadable documents (PDFs)
+#
+# Drop the department's PDFs here using the exact filenames the pages expect,
+# and the download buttons switch from the live-portal fallback to the local
+# bundled file automatically (see src/data/assets.js -> doc()).
+#
+# Expected filenames:
+#   Academics
+#     routine.pdf            — Class routine
+#     syllabus2nd.pdf        — Syllabus, 2nd year
+#     syllabus3rd.pdf        — Syllabus, 3rd year
+#     syllabus4th.pdf        — Syllabus, 4th year
+#     syllabusRobotics.pdf   — Minor Degree in Robotics syllabus
+#     academicCalender.pdf   — Academic calendar
+#     holidayList.pdf        — Holiday list
+#   Events
+#     magazine.pdf           — Department magazine (EEE-xtravaganza)
+#     newsletter.pdf         — Department newsletter
+#     fdp1.pdf … fdp5.pdf    — FDP reports (one per programme, newest first)
+#   Student Corner — Assignments (digit = year, letter = subject index)
+#     theory2a.pdf, theory2b.pdf, theory2c.pdf        — 2nd year theory
+#     practical2a.pdf, practical2b.pdf, practical2c.pdf — 2nd year practical
+#     theory3a.pdf, theory3b.pdf, theory3c.pdf        — 3rd year theory
+#     practical3a.pdf, practical3b.pdf, practical3c.pdf — 3rd year practical
