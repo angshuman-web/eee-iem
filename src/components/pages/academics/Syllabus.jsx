@@ -36,7 +36,7 @@ export default function Syllabus() {
       <Band tone="soft">
         <SectionTitle heading="Specialised Programme" />
         <div className="grid gap-3 sm:grid-cols-2">
-          <DownloadLink title="EEE Minor Degree in Robotics — IEMK 2024" meta="PDF" href={doc('syllabusRobotics.pdf') || LIVE} />
+          <DownloadLink title="EEE Minor Degree in Robotics — IEMK 2024" meta="PDF" href={doc('syllabusminor.pdf') || LIVE} />
         </div>
       </Band>
     </PageShell>
