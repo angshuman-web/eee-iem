@@ -78,7 +78,7 @@ export const programs = [
   },
   {
     tag: 'Postgraduate',
-    title: 'M.Tech in Power Systems / Power Electronics',
+    title: 'M.Tech in Electrical & Electronics Engineering',
     duration: '2 Years · 4 Semesters',
     seats: '18 Seats',
     accent: 'navy',

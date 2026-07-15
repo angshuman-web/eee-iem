@@ -62,7 +62,7 @@ export default function AcademicCalendar() {
           </p>
         </Prose>
         <div className="mt-6 grid gap-3 sm:grid-cols-2">
-          <DownloadLink title="Academic Calendar 2026-2027" meta="PDF · Current session" href={doc('academicCalender.pdf') || LIVE} />
+          <DownloadLink title="Academic Calendar 2026-2027" meta="PDF · Current session" href={doc('academiccalender.pdf') || LIVE} />
         </div>
       </Band>
 

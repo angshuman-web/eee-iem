@@ -4,7 +4,12 @@ import PageShell, { Band, SectionTitle, StatCard, CheckItem } from '../PageShell
 import Reveal from '../../common/Reveal'
 import BarChart from '../../common/BarChart'
 import { img } from '../../../data/images'
+import { asset } from '../../../data/assets'
 import { placementBatches } from '../../../data/placements'
+
+// Same convention as the home placements strip: logo file is the recruiter name
+// lowercased with non-alphanumerics stripped — "Tata Power" -> tatapower.png.
+const logoFile = (name) => `${name.toLowerCase().replace(/[^a-z0-9]/g, '')}.png`
 
 const crumb = [
   { label: 'Student Corner', to: '/student-corner/placement' },
@@ -117,12 +122,21 @@ export default function Placement() {
       <Band tone="soft">
         <SectionTitle heading="Where our students go" />
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-          {recruiters.map((name) => (
-            <Reveal key={name} className="flex h-16 items-center justify-center gap-2.5 rounded-xl border border-surface-line bg-white px-4 shadow-soft transition-colors duration-300 hover:border-brand-blue/30">
-              <Handshake size={16} className="text-brand-blue/50" />
-              <span className="font-display text-[14px] font-bold text-ink-600">{name}</span>
-            </Reveal>
-          ))}
+          {recruiters.map((name) => {
+            const logo = asset(logoFile(name))
+            return (
+              <Reveal key={name} className="group flex h-16 items-center justify-center gap-2.5 rounded-xl border border-surface-line bg-white px-4 shadow-soft transition-colors duration-300 hover:border-brand-blue/30">
+                {logo ? (
+                  <img src={logo} alt={name} loading="lazy" className="max-h-9 w-auto max-w-full object-contain transition-transform duration-300 group-hover:scale-105" />
+                ) : (
+                  <>
+                    <Handshake size={16} className="text-brand-blue/50" />
+                    <span className="font-display text-[14px] font-bold text-ink-600">{name}</span>
+                  </>
+                )}
+              </Reveal>
+            )
+          })}
         </div>
       </Band>
     </PageShell>

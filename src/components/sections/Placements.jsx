@@ -66,7 +66,7 @@ export default function Placements() {
                   className="group flex h-16 items-center justify-center rounded-xl border border-surface-line bg-white px-3 font-display text-[15px] font-bold text-ink-400 shadow-soft transition-all duration-400 ease-smooth hover:-translate-y-1 hover:border-brand-blue/30 hover:text-brand-blue hover:shadow-card"
                 >
                   {logo ? (
-                    <img src={logo} alt={r} loading="lazy" className="max-h-9 w-auto max-w-full object-contain grayscale transition-all duration-300 group-hover:grayscale-0" />
+                    <img src={logo} alt={r} loading="lazy" className="max-h-9 w-auto max-w-full object-contain transition-transform duration-300 group-hover:scale-105" />
                   ) : (
                     r
                   )}

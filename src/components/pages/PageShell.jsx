@@ -1,9 +1,11 @@
+import { useState } from 'react'
 import {
   ChevronRight, Home, CheckCircle2, ExternalLink, ArrowRight, FileDown,
-  GraduationCap, Quote, Image as ImageIcon, Mail,
+  GraduationCap, Quote, Image as ImageIcon, Mail, Eye, Download,
 } from 'lucide-react'
 import Reveal from '../common/Reveal'
 import SmartLink from '../common/SmartLink'
+import PdfModal from '../common/PdfModal'
 import { asset } from '../../data/assets'
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -172,17 +174,15 @@ export function NumberedItem({ badge, title, text, delay = 0 }) {
   )
 }
 
-// A downloadable / external resource row.
-export function DownloadLink({ title, meta, href, delay = 0 }) {
+// A document resource row. Offers an in-page preview ("View" opens the PDF in a
+// popup) alongside a direct "Download". `href` is the resolved document URL (or
+// a live-portal fallback). Pass `previewable={false}` for non-PDF targets to
+// hide the View action.
+export function DownloadLink({ title, meta, href, previewable = true, delay = 0 }) {
+  const [open, setOpen] = useState(false)
   return (
     <Reveal delay={delay}>
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        download
-        className="group flex items-center gap-4 rounded-xl border border-surface-line bg-white p-4 shadow-soft transition-all duration-400 ease-smooth hover:-translate-y-1 hover:border-brand-blue/30 hover:shadow-cardhover"
-      >
+      <div className="group flex items-center gap-4 rounded-xl border border-surface-line bg-white p-4 shadow-soft transition-all duration-400 ease-smooth hover:-translate-y-1 hover:border-brand-blue/30 hover:shadow-cardhover">
         <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-brand-skysoft text-brand-blue transition-all duration-400 ease-smooth group-hover:scale-110 group-hover:bg-brand-blue group-hover:text-white group-hover:shadow-pill">
           <FileDown size={19} />
         </span>
@@ -190,8 +190,28 @@ export function DownloadLink({ title, meta, href, delay = 0 }) {
           <p className="truncate text-[14px] font-semibold text-ink-900">{title}</p>
           {meta && <p className="text-[12px] text-ink-400">{meta}</p>}
         </div>
-        <ArrowRight size={16} className="shrink-0 text-ink-400 transition-all duration-300 group-hover:translate-x-0.5 group-hover:text-brand-blue" />
-      </a>
+        <div className="flex shrink-0 items-center gap-2">
+          {previewable && (
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
+              className="inline-flex items-center gap-1.5 rounded-lg border border-surface-line px-3 py-2 text-[12.5px] font-semibold text-ink-600 transition-colors hover:border-brand-blue/40 hover:bg-brand-skysoft hover:text-brand-blue"
+            >
+              <Eye size={14} /> <span className="hidden sm:inline">View</span>
+            </button>
+          )}
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            download
+            className="inline-flex items-center gap-1.5 rounded-lg bg-brand-blue px-3 py-2 text-[12.5px] font-semibold text-white transition-colors hover:bg-brand-bluedark"
+          >
+            <Download size={14} /> <span className="hidden sm:inline">Download</span>
+          </a>
+        </div>
+      </div>
+      {open && previewable && <PdfModal title={title} href={href} onClose={() => setOpen(false)} />}
     </Reveal>
   )
 }
