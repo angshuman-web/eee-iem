@@ -178,8 +178,8 @@ export const partners = [
 
 // ── News / events / workshops ────────────────────────────────────────────────
 export const news = [
-  { type: 'Conference', date: '12–14 Sep 2025', title: 'IEMRE 2025 — Innovation in Energy Management & Renewable Resources', text: 'The fifth international conference (hybrid) on renewable energy, power systems and energy management, with global keynotes and technical workshops.', image: img.lecture },
-  { type: 'Workshop', date: '29–30 Jun 2026', title: 'Workshop on PC Building & Hardware Integration', text: 'Hands-on assembly, fault-finding and troubleshooting, with certificates awarded by the Head of the Department.', image: img.server },
+  { type: 'Conference', date: '10–12 Dec 2026', title: 'International Conference on Computational Intelligence in Electrical and Electronics Systems (CIE2S 2026)', text: 'Join CIE2S 2026, an international IEEE technically supported conference bringing together researchers, academicians, and industry experts in Electrical and Electronics Systems. Present your research, collaborate globally, and publish in IEEE Xplore (subject to quality review).', image: img.lecture },
+  { type: 'Workshop', date: 'August 2026', title: 'PCB Design Training', text: 'Master the fundamentals of PCB Design with practical sessions using MSME tools and an exclusive Tool Room visit. Learn, design, and build industry-ready skills in just 3 days', image: img.server },
   { type: 'Seminar', date: '18 Mar 2026', title: 'ARM Cortex MCU Deep Dive with Live Demos', text: 'A distinguished lecture by a senior embedded architect bridging microcontroller theory and practice.', image: img.handsCircuit },
   { type: 'Workshop', date: '8–10 Sep 2025', title: 'Future Mobility: EV Powertrain, ADAS & Grid Interaction', text: 'A MATLAB-Simulink workshop on EV powertrains, battery management and grid integration.', image: img.motors },
 ]
