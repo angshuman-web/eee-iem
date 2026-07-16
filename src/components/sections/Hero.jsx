@@ -49,10 +49,8 @@ export default function Hero() {
               Department of {' '}
               <span className="text-white">Electrical &amp; Electronics Engineering</span>
             </h1>
-            <p className="mt-5 max-w-xl text-[15.5px] leading-relaxed text-white/80">
-              At the Institute of Engineering &amp; Management, we blend rigorous fundamentals with
-              hands-on practice — from power systems and drives to embedded intelligence and
-              renewable energy — shaping engineers who build what matters.
+            <p className="mt-5 max-w-xxl text-[15.5px] leading-relaxed text-white/80">
+              With the advent of Industry 4.0, there is a growing demand for Electrical and Electronics Engineers with adequate knowledge of IoT, Artificial Intelligence and Coding. The Department of Electrical and Electronics Engineering of the Institute of Engineering & Management is making the best effort to turn out highly trained, employable and capable technocrats with leadership skills in modern technology.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
